@@ -1,9 +1,15 @@
 import EventEmitter from 'node:events';
 
-const sendMessage = new EventEmitter();
+const emitter = new EventEmitter();
 
-sendMessage.on("message", (username, userMessage) => {
+const sendMessage = (username, userMessage, emitter) => {
+    emitter.emit("message", username, userMessage)
+}
+
+emitter.on("message", (username, userMessage) => {
     console.log(`${username}: ${userMessage}`);
 })
 
-export default sendMessage;
+sendMessage("Alexander", "Hello!!!", emitter);
+sendMessage("Michail", "How is it going?", emitter);
+sendMessage("Yuriy", "Great!", emitter);
