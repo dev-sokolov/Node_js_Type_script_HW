@@ -6,21 +6,28 @@ const filePath = path.resolve("src", "info.txt");
 
 const textData = "Node.js is awesome!"
 
-export const createAndWtiteFile = async (filePath, text) => {
+export const createAndWtiteFile = async (path, text) => {
     try {
-        await fs.writeFile(filePath, text)
+        await fs.writeFile(path, text)
         console.log("file is created and written");
 
-        const fileData = await fs.readFile(filePath, "utf-8");
-        console.log(fileData);
-        return true;
+        const fileData = await fs.readFile(path, "utf-8");
+        return fileData;
     } catch (error) {
-        console.log(error.message);
-        return false
+        error.message = "Something went wrong"
+        throw error;
     }
 }
 
-createAndWtiteFile(filePath, textData)
+const checking = async () => {
+    const result = await createAndWtiteFile(filePath, textData);
+    console.log(result);    
+}
+
+checking();
+
+
+
 
 
 
