@@ -19,12 +19,8 @@ export const createAndWtiteFile = async (path, text) => {
     }
 }
 
-const checking = async () => {
-    const result = await createAndWtiteFile(filePath, textData);
-    console.log(result);    
-}
+console.log(await createAndWtiteFile(filePath, textData));
 
-checking();
 
 
 
