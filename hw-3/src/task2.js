@@ -4,16 +4,33 @@ import path from 'node:path';
 
 const filePath = path.resolve("src", "info.txt");
 
-try {
-    await fs.writeFile(filePath, "Node.js is awesome!")
-    console.log("file created and written");
+const textData = "Node.js is awesome!"
 
-    const fileData = await fs.readFile(filePath, "utf-8");
-    console.log(fileData);
+export const createAndWtiteFile = async (filePath, text) => {
+    try {
+        await fs.writeFile(filePath, text)
+        console.log("file is created and written");
 
-} catch (error) {
-    console.log(error.message);
+        const fileData = await fs.readFile(filePath, "utf-8");
+        console.log(fileData);
+        return true;
+    } catch (error) {
+        console.log(error.message);
+        return false
+    }
 }
+
+createAndWtiteFile(filePath, textData)
+
+
+
+
+
+
+
+
+
+
 
 
 
