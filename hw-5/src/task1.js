@@ -9,7 +9,7 @@ app.use((req, res, next) => {
     if (!authorization) {
         res.status(401).send("<h2>Unauthorized</h2>");
     } else {
-        res.status(200).send("<h2>Authorization header received</h2>");
+        res.send("<h2>Authorization header received</h2>");
     }
     next();
 });

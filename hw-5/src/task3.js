@@ -7,9 +7,9 @@ app.use((req, res, next) => {
     res.setHeader("Content-Type", "text/plain");
 
     if (method === "PUT") {
-        res.status(200).send("<h2>PUT-запрос обработан</h2>")
+        res.send("<h2>PUT-запрос обработан</h2>")
     } else if (method === "DELETE") {
-        res.status(200).send("<h2>DELETE-запрос обработан</h2>")
+        res.send("<h2>DELETE-запрос обработан</h2>")
     } else {
         true
     }
