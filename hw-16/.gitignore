@@ -1,0 +1,6 @@
+node_modeles
+dist
+
+.env
+.vscode
+.idea
