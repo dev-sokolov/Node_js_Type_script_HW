@@ -4,7 +4,7 @@ export const productSchema = new Schema({
     name: {
         type: String,
         required: true,
-        minlength: 2
+        minlength: 2,
     },
     price: {
         type: Number,
