@@ -32,7 +32,7 @@ console.log(isStringNoEmpty("checking"));
 console.log(isStringNoEmpty(""));
 
 // Задание 3
-// Создайте тип `CompareStrings` для функции, принимающей две строки и возвращающей `boolean` (например, для проверки равенства строк). Напишите функцию, соответствующую этому типу.
+// Создайте тип `CompareStrings` для функции,  принимающей две строки и возвращающей `boolean` (например, для проверки равенства строк). Напишите функцию, соответствующую этому типу.
 
 type CompareStrings = {
   (text1: string, text2: string): boolean;
