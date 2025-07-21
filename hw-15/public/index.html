@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Простой чат на Socket.io</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #messages { border: 1px solid #ccc; padding: 10px; height: 150px; overflow-y: scroll; }
+    #input { width: 300px; }
+  </style>
+</head>
+<body>
+  <h1>Простой чат</h1>
+
+  <div id="messages"></div>
+
+  <input id="input" placeholder="Введите сообщение" />
+  <button id="sendBtn">Send Message</button>
+
+  
+  <script src="http://localhost:5000/socket.io/socket.io.js"></script>
+  <script>
+    const socket = io("http://localhost:5000");
+
+    const messagesDiv = document.getElementById('messages');
+    const input = document.getElementById('input');
+    const sendBtn = document.getElementById('sendBtn');
+
+    // Обработчик кнопки отправки сообщения
+    sendBtn.addEventListener('click', () => {
+      const message = input.value.trim();
+      if (!message) return;
+
+      // Отправляем сообщение на сервер
+      socket.emit('messageHandler', message);
+
+      // Очищаем поле ввода
+      input.value = '';
+    });
+
+    // Обработка подтверждения от сервера
+    socket.on('message received', (msg) => {
+      const text = document.createElement('div');
+      text.textContent = msg;
+      messagesDiv.appendChild(text);
+
+      // Автоскролл вниз
+    //   messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    });
+
+    
+  </script>
+</body>
+</html>
